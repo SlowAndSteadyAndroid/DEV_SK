@@ -3,13 +3,11 @@ package com.example.dev_sk.fragment
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.dev_sk.R
 
-class AMainFragment : Fragment() {
+class AMainFragment : Fragment(R.layout.fragment_a_main) {
 
 
     override fun onAttach(context: Context) {
@@ -22,13 +20,6 @@ class AMainFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_a_main, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d(TAG, "onViewCreated")
