@@ -11,13 +11,21 @@ import com.example.mvvm.databinding.ActivityMainBinding
 // V <-> VM
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
+
+    private val mainViewModel = MainViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.viewModel = mainViewModel
+
         setContentView(binding.root)
 
+
+        mainViewModel.resultValue.observe(this) {
+            binding.tvResult.text = it
+        }
     }
 
 }
