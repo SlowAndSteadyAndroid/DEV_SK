@@ -11,7 +11,8 @@ class MainViewModel : ViewModel() {
 
     val resultObservableField = ObservableField("")
 
-    fun operation() {
+
+    fun operationPlus() {
         resultObservableField.set(
             (inputA.value.orEmpty().toInt() + inputB.value.orEmpty().toInt()).toString()
         )
