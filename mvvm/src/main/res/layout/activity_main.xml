@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.example.mvvm.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +21,7 @@
             android:layout_height="wrap_content"
             android:hint="input A!"
             android:inputType="number"
+            android:text="@={viewModel.inputA}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".2"
@@ -32,6 +36,7 @@
             android:layout_height="wrap_content"
             android:hint="input B!"
             android:inputType="number"
+            android:text="@={viewModel.inputB}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias=".8"
