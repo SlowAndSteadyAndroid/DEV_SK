@@ -12,10 +12,19 @@ class MainViewModel : ViewModel() {
     val resultObservableField = ObservableField("")
 
 
-    fun operationPlus() {
-        resultObservableField.set(
-            (inputA.value.orEmpty().toInt() + inputB.value.orEmpty().toInt()).toString()
-        )
+    fun operation(operationType: OperationType) {
+        when(operationType){
+            OperationType.PLUS -> {
+                resultObservableField.set(
+                    (inputA.value.orEmpty().toInt() + inputB.value.orEmpty().toInt()).toString()
+                )
+            }
+
+        }
     }
 
+}
+
+enum class OperationType {
+    PLUS
 }
