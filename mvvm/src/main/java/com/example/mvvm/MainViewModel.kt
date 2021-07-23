@@ -1,6 +1,6 @@
 package com.example.mvvm
 
-import androidx.lifecycle.LiveData
+import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
@@ -9,12 +9,12 @@ class MainViewModel : ViewModel() {
     val inputA = MutableLiveData<String>()
     val inputB = MutableLiveData<String>()
 
-    private val _resultValue = MutableLiveData("")
-    val resultValue: LiveData<String> = _resultValue
+    val resultObservableField = ObservableField("")
 
     fun operation() {
-        _resultValue.value =
+        resultObservableField.set(
             (inputA.value.orEmpty().toInt() + inputB.value.orEmpty().toInt()).toString()
+        )
     }
 
 }

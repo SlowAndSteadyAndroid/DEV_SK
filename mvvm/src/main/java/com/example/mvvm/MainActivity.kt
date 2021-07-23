@@ -18,8 +18,5 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
         setContentView(binding.root)
 
-        mainViewModel.resultValue.observe(this) {
-            binding.tvResult.text = it
-        }
     }
 }
