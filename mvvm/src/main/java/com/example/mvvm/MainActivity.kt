@@ -18,24 +18,8 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = mainViewModel
         setContentView(binding.root)
 
-
-        with(mainViewModel) {
-
-            inputA.observe(this@MainActivity) {
-                Log.d("결과", "InputA : $it")
-            }
-
-            inputB.observe(this@MainActivity) {
-                Log.d("결과", "InputB : $it")
-            }
-
-        }
-
-        with(binding) {
-            buttonResult.setOnClickListener {
-                tvResult.text =
-                    (etInputA.text.toString().toInt() + etInputB.text.toString().toInt()).toString()
-            }
+        mainViewModel.resultValue.observe(this) {
+            binding.tvResult.text = it
         }
     }
 }
