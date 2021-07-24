@@ -5,4 +5,15 @@ class LocalDataSourceImpl : LocalDataSource {
         return "Local call getData"
     }
 
+
+    companion object {
+
+        private var instance: LocalDataSourceImpl? = null
+
+        fun getInstance(): LocalDataSource =
+            instance ?: LocalDataSourceImpl().also {
+                instance = it
+            }
+
+    }
 }
