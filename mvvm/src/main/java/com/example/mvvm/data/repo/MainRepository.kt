@@ -1,3 +1,5 @@
 package com.example.mvvm.data.repo
 
-interface MainRepository
+interface MainRepository {
+    fun getData(): String
+}
