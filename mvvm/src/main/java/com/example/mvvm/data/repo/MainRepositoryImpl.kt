@@ -1,7 +1,6 @@
 package com.example.mvvm.data.repo
 
 import com.example.mvvm.data.source.local.LocalDataSource
-import com.example.mvvm.data.source.local.LocalDataSourceImpl
 
 class MainRepositoryImpl(private val localDataSource: LocalDataSource) : MainRepository {
 
