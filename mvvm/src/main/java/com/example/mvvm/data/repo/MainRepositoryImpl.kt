@@ -3,11 +3,13 @@ package com.example.mvvm.data.repo
 import com.example.mvvm.data.source.local.LocalDataSource
 
 class MainRepositoryImpl(private val localDataSource: LocalDataSource) : MainRepository {
-
-    override fun getData(): String {
-        return localDataSource.getData()
+    override fun getLocalData(): String {
+        return localDataSource.getLocalData()
     }
 
+    override fun setLocalData(data: String) {
+        localDataSource.setLocalData(data)
+    }
 
     companion object {
 
@@ -19,4 +21,6 @@ class MainRepositoryImpl(private val localDataSource: LocalDataSource) : MainRep
             }
 
     }
+
+
 }

@@ -1,5 +1,6 @@
 package com.example.mvvm.data.repo
 
 interface MainRepository {
-    fun getData(): String
+    fun getLocalData(): String
+    fun setLocalData(data: String)
 }
