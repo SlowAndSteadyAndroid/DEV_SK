@@ -1,38 +1,52 @@
 package com.example.mvvm
 
-import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mvvm.data.repo.MainRepository
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class MainViewModel : ViewModel() {
 
-    val inputA = MutableLiveData<String>()
-    val inputB = MutableLiveData<String>()
 
-    val resultObservableField = ObservableField("")
+    private val _mainViewStateLiveData = MutableLiveData<MainViewState>()
+    val mainViewStateLiveData: LiveData<MainViewState> = _mainViewStateLiveData
 
-    private val _localStringLiveData = MutableLiveData<String>()
-    val localStringLiveData: LiveData<String> = _localStringLiveData
+    fun operation() {
+        CoroutineScope(Dispatchers.Main).launch {
 
-    fun operation(operationType: OperationType) {
-        when (operationType) {
-            OperationType.PLUS -> {
-                resultObservableField.set(
-                    (inputA.value.orEmpty().toInt() + inputB.value.orEmpty().toInt()).toString()
-                )
-            }
+            startOperation()
+
+            delay(2000)
+
+            operationPlus()
+
+            endOperation()
 
         }
     }
 
-    fun getLocalData() {
-        _localStringLiveData.value = mainRepository.getData()
+
+    private fun startOperation() {
+        _mainViewStateLiveData.value = MainViewState.StartOperation
+    }
+
+    private fun endOperation() {
+        _mainViewStateLiveData.value = MainViewState.EndOperation
+    }
+
+    private fun operationPlus() {
+        _mainViewStateLiveData.value = MainViewState.OperationPlus
+    }
+
+
+    sealed class MainViewState {
+        object StartOperation : MainViewState()
+        object EndOperation : MainViewState()
+        object OperationPlus : MainViewState()
     }
 
 }
 
-enum class OperationType {
-    PLUS
-}
