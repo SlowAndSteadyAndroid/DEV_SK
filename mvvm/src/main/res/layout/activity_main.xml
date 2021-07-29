@@ -5,6 +5,7 @@
 
     <data>
 
+
         <variable
             name="viewModel"
             type="com.example.mvvm.MainViewModel" />
@@ -59,7 +60,7 @@
             android:id="@+id/button_plus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.operationPlus()}"
+            android:onClick="@{() -> viewModel}"
             android:text="+"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +74,7 @@
             android:id="@+id/button_min"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.operationMin()}"
+            android:onClick="@{() -> viewModel.operation(Operation.MIN)}"
             android:text="-"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +88,7 @@
             android:id="@+id/button_mul"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.operationMul()}"
+            android:onClick="@{() -> viewModel.operation(Operation.MUL)}"
             android:text="*"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +102,7 @@
             android:id="@+id/button_div"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> viewModel.operationDiv()}"
+            android:onClick="@{() -> viewModel.operation(Operation.DIV)}"
             android:text="/"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvm.data.repo.MainRepository
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.mvvm.enums.Operation
 
 class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
@@ -17,17 +14,37 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     val input1LiveData = MutableLiveData<String>()
     val input2LiveData = MutableLiveData<String>()
 
-    fun operation() {
-        CoroutineScope(Dispatchers.Main).launch {
-            getLocalData()
+    fun operation(operation: Operation) {
 
-            startOperation()
 
-            delay(1000)
+        when (operation) {
+            Operation.PLUS -> {
+                _mainViewStateLiveData.value = MainViewState.Operation(
+                    (input1LiveData.value.orEmpty().toInt() + input2LiveData.value.orEmpty()
+                        .toInt()).toString()
+                )
+            }
 
-            operationPlus()
+            Operation.MIN -> {
+                _mainViewStateLiveData.value = MainViewState.Operation(
+                    (input1LiveData.value.orEmpty().toInt() - input2LiveData.value.orEmpty()
+                        .toInt()).toString()
+                )
+            }
 
-            endOperation()
+            Operation.MUL -> {
+                _mainViewStateLiveData.value = MainViewState.Operation(
+                    (input1LiveData.value.orEmpty().toInt() * input2LiveData.value.orEmpty()
+                        .toInt()).toString()
+                )
+            }
+
+            Operation.DIV -> {
+                _mainViewStateLiveData.value = MainViewState.Operation(
+                    (input1LiveData.value.orEmpty().toInt() / input2LiveData.value.orEmpty()
+                        .toInt()).toString()
+                )
+            }
 
         }
     }
@@ -40,36 +57,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     private fun endOperation() {
         _mainViewStateLiveData.value = MainViewState.EndOperation
     }
-
-    fun operationPlus() {
-        _mainViewStateLiveData.value = MainViewState.Operation(
-            (input1LiveData.value.orEmpty().toInt() + input1LiveData.value.orEmpty()
-                .toInt()).toString()
-        )
-
-    }
-
-    fun operationMin() {
-        _mainViewStateLiveData.value = MainViewState.Operation(
-            (input1LiveData.value.orEmpty().toInt() - input1LiveData.value.orEmpty()
-                .toInt()).toString()
-        )
-    }
-
-    fun operationMul() {
-        _mainViewStateLiveData.value = MainViewState.Operation(
-            (input1LiveData.value.orEmpty().toInt() * input1LiveData.value.orEmpty()
-                .toInt()).toString()
-        )
-    }
-
-    fun operationDiv() {
-        _mainViewStateLiveData.value = MainViewState.Operation(
-            (input1LiveData.value.orEmpty().toInt() / input1LiveData.value.orEmpty()
-                .toInt()).toString()
-        )
-    }
-
 
     private fun routeSubActivity() {
         _mainViewStateLiveData.value = MainViewState.RouteSub
@@ -90,6 +77,5 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         object RouteSub : MainViewState()
         data class GetLocalData(val data: String) : MainViewState()
     }
-
-    enum class Plus
 }
+
