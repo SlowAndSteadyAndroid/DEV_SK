@@ -14,6 +14,9 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     private val _mainViewStateLiveData = MutableLiveData<MainViewState>()
     val mainViewStateLiveData: LiveData<MainViewState> = _mainViewStateLiveData
 
+    val input1LiveData = MutableLiveData<String>()
+    val input2LiveData = MutableLiveData<String>()
+
     fun operation() {
         CoroutineScope(Dispatchers.Main).launch {
             getLocalData()
@@ -24,16 +27,8 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
             operationPlus()
 
-
             endOperation()
 
-            delay(1000)
-
-            updateLocalData()
-            getLocalData()
-
-            delay(1000)
-            routeSubActivity()
         }
     }
 
@@ -46,9 +41,35 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         _mainViewStateLiveData.value = MainViewState.EndOperation
     }
 
-    private fun operationPlus() {
-        _mainViewStateLiveData.value = MainViewState.OperationPlus(mainRepository.getLocalData())
+    fun operationPlus() {
+        _mainViewStateLiveData.value = MainViewState.Operation(
+            (input1LiveData.value.orEmpty().toInt() + input1LiveData.value.orEmpty()
+                .toInt()).toString()
+        )
+
     }
+
+    fun operationMin() {
+        _mainViewStateLiveData.value = MainViewState.Operation(
+            (input1LiveData.value.orEmpty().toInt() - input1LiveData.value.orEmpty()
+                .toInt()).toString()
+        )
+    }
+
+    fun operationMul() {
+        _mainViewStateLiveData.value = MainViewState.Operation(
+            (input1LiveData.value.orEmpty().toInt() * input1LiveData.value.orEmpty()
+                .toInt()).toString()
+        )
+    }
+
+    fun operationDiv() {
+        _mainViewStateLiveData.value = MainViewState.Operation(
+            (input1LiveData.value.orEmpty().toInt() / input1LiveData.value.orEmpty()
+                .toInt()).toString()
+        )
+    }
+
 
     private fun routeSubActivity() {
         _mainViewStateLiveData.value = MainViewState.RouteSub
@@ -65,8 +86,10 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     sealed class MainViewState {
         object StartOperation : MainViewState()
         object EndOperation : MainViewState()
-        data class OperationPlus(val data: String) : MainViewState() // dataClass
+        data class Operation(val resultOperation: String) : MainViewState() // dataClass
         object RouteSub : MainViewState()
         data class GetLocalData(val data: String) : MainViewState()
     }
+
+    enum class Plus
 }

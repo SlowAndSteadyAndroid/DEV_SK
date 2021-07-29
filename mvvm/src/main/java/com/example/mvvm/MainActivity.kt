@@ -3,7 +3,6 @@ package com.example.mvvm
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.example.mvvm.data.repo.MainRepositoryImpl
@@ -36,10 +35,8 @@ class MainActivity : AppCompatActivity() {
                     binding.progressbar.isVisible = false
                 }
 
-                is MainViewModel.MainViewState.OperationPlus -> {
-                    binding.tvResult.text =
-                        (binding.etInputA.text.toString().toInt() + binding.etInputB.text.toString()
-                            .toInt()).toString()
+                is MainViewModel.MainViewState.Operation -> {
+                    binding.tvResult.text = viewState.resultOperation
                 }
                 MainViewModel.MainViewState.RouteSub -> {
                     startActivity(Intent(this@MainActivity, SubActivity::class.java))
