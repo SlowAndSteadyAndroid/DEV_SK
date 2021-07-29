@@ -46,7 +46,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     }
 
     private fun operationPlus() {
-        _mainViewStateLiveData.value = MainViewState.OperationPlus
+        _mainViewStateLiveData.value = MainViewState.OperationPlus(mainRepository.getLocalData())
     }
 
     private fun routeSubActivity() {
@@ -64,7 +64,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     sealed class MainViewState {
         object StartOperation : MainViewState()
         object EndOperation : MainViewState()
-        object OperationPlus : MainViewState() // dataClass
+        data class OperationPlus(val data: String) : MainViewState() // dataClass
         object RouteSub : MainViewState()
         data class GetLocalData(val data: String) : MainViewState()
     }

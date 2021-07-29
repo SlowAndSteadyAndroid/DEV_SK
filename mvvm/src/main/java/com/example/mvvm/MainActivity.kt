@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                     binding.progressbar.isVisible = false
                 }
 
-                MainViewModel.MainViewState.OperationPlus -> {
+                is MainViewModel.MainViewState.OperationPlus -> {
                     binding.tvResult.text =
                         (binding.etInputA.text.toString().toInt() + binding.etInputB.text.toString()
                             .toInt()).toString()
