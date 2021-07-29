@@ -1,18 +1,15 @@
 package com.example.mvvm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
-import androidx.databinding.DataBindingUtil
 import com.example.mvvm.base.BaseActivity
 import com.example.mvvm.data.repo.MainRepositoryImpl
 import com.example.mvvm.data.source.local.LocalDataSourceImpl
 import com.example.mvvm.databinding.ActivityMainBinding
 
-class MainActivity : BaseActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
-    private lateinit var binding: ActivityMainBinding
 
     private val mainViewModel =
         MainViewModel(MainRepositoryImpl.getInstance(LocalDataSourceImpl.getInstance()))
@@ -20,10 +17,8 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.viewModel = mainViewModel
-        setContentView(binding.root)
 
         mainViewModel.mainViewStateLiveData.observe(this) { viewState ->
             when (viewState) {
