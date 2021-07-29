@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import com.example.mvvm.base.BaseActivity
 import com.example.mvvm.data.repo.MainRepositoryImpl
 import com.example.mvvm.data.source.local.LocalDataSourceImpl
 import com.example.mvvm.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 

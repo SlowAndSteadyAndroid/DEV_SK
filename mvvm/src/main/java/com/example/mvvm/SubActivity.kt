@@ -3,11 +3,12 @@ package com.example.mvvm
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.mvvm.base.BaseActivity
 import com.example.mvvm.data.repo.MainRepositoryImpl
 import com.example.mvvm.data.source.local.LocalDataSourceImpl
 import com.example.mvvm.databinding.ActivitySubBinding
 
-class SubActivity : AppCompatActivity() {
+class SubActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySubBinding
 
