@@ -6,10 +6,10 @@
 
 
     <Button
-        android:id="@+id/btn_send"
+        android:id="@+id/btn_count_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send"
+        android:text="Count Up!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

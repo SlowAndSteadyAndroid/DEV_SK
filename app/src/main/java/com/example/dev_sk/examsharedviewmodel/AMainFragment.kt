@@ -3,11 +3,21 @@ package com.example.dev_sk.examsharedviewmodel
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.dev_sk.R
 
 class AMainFragment : Fragment(R.layout.fragment_a_main) {
 
+    private val activityViewModel: MainViewModel by lazy {
+        ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MainViewModel() as T
+            }
+        }).get(MainViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate")
@@ -18,6 +28,10 @@ class AMainFragment : Fragment(R.layout.fragment_a_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         Log.d(TAG, "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
+
+        requireActivity().findViewById<Button>(R.id.btn_count_up).setOnClickListener {
+            activityViewModel.addString("send String")
+        }
 
     }
 

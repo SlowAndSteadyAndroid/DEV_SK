@@ -4,12 +4,22 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.dev_sk.R
 
 class BMainFragment : Fragment(R.layout.fragment_b_main) {
 
+    private val activityViewModel: MainViewModel by lazy {
+        ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MainViewModel() as T
+            }
+        }).get(MainViewModel::class.java)
+    }
 
     override fun onAttach(context: Context) {
         Log.d(TAG, "onAttach")
@@ -26,11 +36,16 @@ class BMainFragment : Fragment(R.layout.fragment_b_main) {
         Log.d(TAG, "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
 
+        requireActivity().findViewById<Button>(R.id.btn_count_up)?.setOnClickListener {
+            activityViewModel.addTwo()
+        }
+
+        activityViewModel.updateString.observe(requireActivity()) {
+            requireActivity().findViewById<TextView>(R.id.tv_receive).text = it
+        }
+
     }
 
-    fun getData(data: String) {
-        requireView().findViewById<TextView>(R.id.tv_receive).text = data
-    }
 
     override fun onStart() {
         Log.d(TAG, "onStart")
