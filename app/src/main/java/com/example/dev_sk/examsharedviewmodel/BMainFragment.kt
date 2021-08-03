@@ -1,4 +1,4 @@
-package com.example.dev_sk.fragment
+package com.example.dev_sk.examsharedviewmodel
 
 import android.content.Context
 import android.os.Bundle

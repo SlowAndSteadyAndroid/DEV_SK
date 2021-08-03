@@ -2,24 +2,50 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent">
+
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_a"
-        android:name="com.example.dev_sk.fragment.AMainFragment"
+        android:name="com.example.dev_sk.examsharedviewmodel.AMainFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHeight_percent=".5"
+        app:layout_constraintHeight_percent=".4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".0" />
 
+    <Button
+        android:id="@+id/btn_count_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Count Up!"
+        app:layout_constraintBottom_toTopOf="@id/container_b"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_a" />
+
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/container_b"
-        android:name="com.example.dev_sk.fragment.BMainFragment"
+        android:name="com.example.dev_sk.examsharedviewmodel.BMainFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/cardview_dark_background"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent=".4"
         app:layout_constraintTop_toBottomOf="@id/container_a" />
+
+    <TextView
+        android:id="@+id/tv_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_b" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
