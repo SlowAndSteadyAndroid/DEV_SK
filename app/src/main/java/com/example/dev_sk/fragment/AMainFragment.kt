@@ -1,23 +1,13 @@
 package com.example.dev_sk.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.dev_sk.R
 
 class AMainFragment : Fragment(R.layout.fragment_a_main) {
 
-    private lateinit var dataSendListener: DataSendListener
-
-    override fun onAttach(context: Context) {
-        Log.d(TAG, "onAttach")
-        super.onAttach(context)
-        val listener = (context as DataSendListener)
-        dataSendListener = listener
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d(TAG, "onCreate")
@@ -29,9 +19,6 @@ class AMainFragment : Fragment(R.layout.fragment_a_main) {
         Log.d(TAG, "onViewCreated")
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.btn_send).setOnClickListener {
-            dataSendListener.sendData("누름")
-        }
     }
 
 
@@ -75,6 +62,3 @@ class AMainFragment : Fragment(R.layout.fragment_a_main) {
     }
 }
 
-interface DataSendListener {
-    fun sendData(data: String)
-}
