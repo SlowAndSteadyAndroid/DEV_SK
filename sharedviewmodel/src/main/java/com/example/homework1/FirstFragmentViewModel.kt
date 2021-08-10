@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class FragmentViewModel: ViewModel() {
+class FirstFragmentViewModel : ViewModel() {
 
     private val _updateNum = MutableLiveData<Int>(0)
     val updateNum: LiveData<Int> = _updateNum

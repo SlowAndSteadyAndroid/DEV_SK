@@ -5,18 +5,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 
 class BFirstFragment : Fragment(R.layout.fragment_first_b) {
 
-    private val fragmentViewModel: FragmentViewModel by lazy {
-        ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-                return FragmentViewModel() as T
-            }
-        }).get(FragmentViewModel::class.java)
-    }
+    private val fragmentViewModel by viewModels<FirstFragmentViewModel> (ownerProducer = {requireParentFragment()})
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
