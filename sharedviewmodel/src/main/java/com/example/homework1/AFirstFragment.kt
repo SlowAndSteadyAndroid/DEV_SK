@@ -3,16 +3,14 @@ package com.example.homework1
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.homework1.R
 
-class FirstFragment_1 : Fragment(R.layout.fragment_first_1) {
+class AFirstFragment : Fragment(R.layout.fragment_first_a) {
 
     private val activityViewModel: FragmentViewModel by lazy {
-        ViewModelProvider(this@FirstFragment_1, object : ViewModelProvider.Factory {
+        ViewModelProvider(this@AFirstFragment, object : ViewModelProvider.Factory {
             override fun <T : ViewModel?> create(modelClass: Class<T>): T {
                 return FragmentViewModel() as T
             }

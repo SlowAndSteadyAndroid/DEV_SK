@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
-class FirstFragment_2 : Fragment(R.layout.fragment_first_2) {
+class BFirstFragment : Fragment(R.layout.fragment_first_b) {
 
     private val fragmentViewModel: FragmentViewModel by lazy {
         ViewModelProvider(requireActivity(), object : ViewModelProvider.Factory {
