@@ -10,14 +10,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 
-
 class FirstMainFragment : Fragment(R.layout.fragment_first_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        }
     }
-
-
-
 }
