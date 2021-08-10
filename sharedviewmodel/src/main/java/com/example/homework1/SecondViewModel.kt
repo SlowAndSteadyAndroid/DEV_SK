@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel : ViewModel() {
+class SecondViewModel : ViewModel() {
 
     private val _sendValue = MutableLiveData<String>()
     val sendValue: LiveData<String> = _sendValue
@@ -13,6 +13,5 @@ class MainViewModel : ViewModel() {
     fun sendValue(string: String) {
         _sendValue.value = string
     }
-
 
 }

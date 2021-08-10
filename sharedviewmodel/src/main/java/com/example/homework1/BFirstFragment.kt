@@ -9,7 +9,7 @@ import androidx.fragment.app.viewModels
 
 class BFirstFragment : Fragment(R.layout.fragment_first_b) {
 
-    private val fragmentViewModel by viewModels<FirstFragmentViewModel> (ownerProducer = {requireParentFragment()})
+    private val fragmentViewModel by viewModels<FirstViewModel> (ownerProducer = {requireParentFragment()})
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

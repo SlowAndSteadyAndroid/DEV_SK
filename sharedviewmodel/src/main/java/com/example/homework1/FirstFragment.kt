@@ -10,9 +10,14 @@ class FirstFragment : Fragment(R.layout.fragment_first_main) {
 
     private val mainViewModel by activityViewModels<MainViewModel>()
 
-    private val mainFragmentViewModel by viewModels<FirstFragmentViewModel>()
+    private val firstViewModel by viewModels<FirstViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        mainViewModel.sendValue.observe(this) {
+            firstViewModel.sendValue(it)
+        }
+
     }
 }
