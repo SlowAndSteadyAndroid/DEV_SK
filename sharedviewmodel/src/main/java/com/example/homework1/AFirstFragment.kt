@@ -1,8 +1,10 @@
 package com.example.homework1
 
+import android.content.Context
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -17,14 +19,61 @@ class AFirstFragment : Fragment(R.layout.fragment_first_a) {
         }).get(FragmentViewModel::class.java)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+    }
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        findViewById<Button>(R.id.btn_count_up).setOnClickListner {
-            FragmentViewModel.addTwo()
-        }
-        fragmentViewModel.updateNum.observe(this@FirstFragment1) { result ->
-            findViewById<TextView>(R.id.tv_count).text =result.toString()
-        }
     }
+
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//        requireActivity().findViewById<Button>(R.id.btn_count_up).setOnClickListener {
+//            activityViewModel.addTwo()
+//        }
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+    }
+
+
 }
