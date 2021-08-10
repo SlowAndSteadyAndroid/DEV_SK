@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -41,9 +43,10 @@ class AFirstFragment : Fragment(R.layout.fragment_first_a) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        requireActivity().findViewById<Button>(R.id.btn_count_up).setOnClickListener {
+        view.findViewById<Button>(R.id.btn_count_up).setOnClickListener {
+            Toast.makeText(requireContext(), "Click A", Toast.LENGTH_SHORT).show()
 //            activityViewModel.addTwo()
-//        }
+        }
     }
 
 
