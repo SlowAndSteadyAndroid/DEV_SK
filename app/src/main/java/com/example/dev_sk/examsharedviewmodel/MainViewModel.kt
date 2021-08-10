@@ -20,5 +20,4 @@ class MainViewModel : ViewModel() {
     fun addString(string: String) {
         _updateString.value = string
     }
-
 }

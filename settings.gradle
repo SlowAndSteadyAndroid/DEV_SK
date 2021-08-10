@@ -3,3 +3,4 @@ rootProject.name = "DEV_SK"
 include ':mvvm'
 include ':retrofit'
 include ':samplemvvm'
+include ':sharedviewmodel'
