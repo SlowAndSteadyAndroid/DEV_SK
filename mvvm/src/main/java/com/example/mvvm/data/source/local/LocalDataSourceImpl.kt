@@ -15,12 +15,6 @@ class LocalDataSourceImpl : LocalDataSource {
 
         private var localData = "getLocalData"
 
-        private var instance: LocalDataSourceImpl? = null
-
-        fun getInstance(): LocalDataSourceImpl =
-            instance ?: LocalDataSourceImpl().also {
-                instance = it
-            }
     }
 
 }
