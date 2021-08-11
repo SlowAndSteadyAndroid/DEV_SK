@@ -9,10 +9,10 @@ import com.example.homeworkviewpager.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
-    val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(binding.root)
 
         //1.페이지 데이터를 로드
         val list = listOf(FragmentA(), FragmentB(), FragmentC())
@@ -28,14 +28,16 @@ class MainActivity : AppCompatActivity() {
 
             //5.탭레이아웃과 뷰페이저 연결
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-                tab.text = titles.get(position)
+                tab.text = titles[position]
             }.attach()
         }
     }
 }
 
-class FragmentPagerAdapter(val fragmentList: List<Fragment>,fragmentActivity: FragmentActivity)
-                                                : FragmentStateAdapter(fragmentActivity){
+class FragmentPagerAdapter(
+    private val fragmentList: List<Fragment>,
+    fragmentActivity: FragmentActivity
+) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount() = fragmentList.size
-    override fun createFragment(position: Int) = fragmentList.get(position)
+    override fun createFragment(position: Int) = fragmentList[position]
 }
