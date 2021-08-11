@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/retrofit" />
             <option value="$PROJECT_DIR$/samplemvvm" />
             <option value="$PROJECT_DIR$/sharedviewmodel" />
+            <option value="$PROJECT_DIR$/viewpager" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
