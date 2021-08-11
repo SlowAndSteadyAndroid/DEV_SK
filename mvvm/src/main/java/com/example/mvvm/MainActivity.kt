@@ -7,12 +7,12 @@ import com.example.mvvm.base.BaseActivity
 import com.example.mvvm.data.repo.MainRepositoryImpl
 import com.example.mvvm.data.source.local.LocalDataSourceImpl
 import com.example.mvvm.databinding.ActivityMainBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
 
-    private val mainViewModel =
-        MainViewModel(MainRepositoryImpl.getInstance(LocalDataSourceImpl.getInstance()))
+    private val mainViewModel by viewModel<MainViewModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

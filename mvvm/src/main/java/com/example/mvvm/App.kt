@@ -3,6 +3,7 @@ package com.example.mvvm
 import android.app.Application
 import com.example.mvvm.koin.repositoryModule
 import com.example.mvvm.koin.sourceModule
+import com.example.mvvm.koin.viewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -13,7 +14,7 @@ class App : Application() {
 
         startKoin {
             androidContext(this@App)
-            modules(listOf(repositoryModule, sourceModule))
+            modules(listOf(repositoryModule, sourceModule, viewModelModule))
         }
     }
 }
