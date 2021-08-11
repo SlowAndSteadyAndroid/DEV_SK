@@ -16,7 +16,8 @@ class NaverRemoteDataSourceImpl : NaverRemoteDataSource {
     ) {
 
         Retrofit.getNaverApi()
-            .searchWord(NaverApi.CLIENT_ID, NaverApi.CLIENT_SECRET, "ko", "en", word).enqueue(object : Callback<NaverResponse>{
+            .searchWord(NaverApi.CLIENT_ID, NaverApi.CLIENT_SECRET, "ko", "en", word)
+            .enqueue(object : Callback<NaverResponse> {
                 override fun onResponse(
                     call: Call<NaverResponse>,
                     response: Response<NaverResponse>
@@ -26,6 +27,27 @@ class NaverRemoteDataSourceImpl : NaverRemoteDataSource {
 
                 override fun onFailure(call: Call<NaverResponse>, t: Throwable) {
                     t.message?.let(onFailure)
+                }
+            })
+    }
+
+    override fun searchNaverWordNotHigh(
+        word: String,
+        searchNaverCallback: com.example.retrofit.data.repo.SearchNaverCallback
+    ) {
+
+        Retrofit.getNaverApi()
+            .searchWord(NaverApi.CLIENT_ID, NaverApi.CLIENT_SECRET, "ko", "en", word)
+            .enqueue(object : Callback<NaverResponse> {
+                override fun onResponse(
+                    call: Call<NaverResponse>,
+                    response: Response<NaverResponse>
+                ) {
+                    response.body()?.let { searchNaverCallback.onSuccess(it) }
+                }
+
+                override fun onFailure(call: Call<NaverResponse>, t: Throwable) {
+                    t.message?.let { searchNaverCallback.onFailure(it) }
                 }
             })
     }

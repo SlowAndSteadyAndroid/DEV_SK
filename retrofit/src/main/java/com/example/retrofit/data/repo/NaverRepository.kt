@@ -9,4 +9,16 @@ interface NaverRepository {
         onSuccess: (naverResponse: NaverResponse) -> Unit,
         onFailure: (errorMessage: String) -> Unit
     )
+
+    fun searchNaverWordNotHigh(
+        word: String,
+        searchNaverCallback: SearchNaverCallback
+    )
+
+}
+
+
+interface SearchNaverCallback {
+    fun onSuccess(naverResponse: NaverResponse)
+    fun onFailure(string: String)
 }

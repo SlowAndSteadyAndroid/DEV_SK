@@ -1,5 +1,6 @@
 package com.example.retrofit.data.source.remote
 
+import com.example.retrofit.data.repo.SearchNaverCallback
 import com.example.retrofit.network.naver.model.NaverResponse
 
 interface NaverRemoteDataSource {
@@ -9,4 +10,9 @@ interface NaverRemoteDataSource {
         onSuccess: (naverResponse: NaverResponse) -> Unit,
         onFailure: (errorMessage: String) -> Unit
     )
+    fun searchNaverWordNotHigh(
+        word: String,
+        searchNaverCallback: SearchNaverCallback
+    )
+
 }

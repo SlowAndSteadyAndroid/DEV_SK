@@ -13,4 +13,8 @@ class NaverRepositoryImpl(private val naverRemoteDataSource: NaverRemoteDataSour
     ) {
         naverRemoteDataSource.searchNaverWord(word, onSuccess, onFailure)
     }
+
+    override fun searchNaverWordNotHigh(word: String, searchNaverCallback: SearchNaverCallback) {
+        naverRemoteDataSource.searchNaverWordNotHigh(word, searchNaverCallback)
+    }
 }
